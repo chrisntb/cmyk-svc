@@ -1,0 +1,15 @@
+meta {
+  name: Read Nodes
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:{{port}}/api/v1/nodes
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: in [200, 204]
+}

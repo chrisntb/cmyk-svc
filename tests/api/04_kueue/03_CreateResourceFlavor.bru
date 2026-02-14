@@ -1,0 +1,24 @@
+meta {
+  name: Create Resource Flavor
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:{{port}}/api/v1/resource-flavors
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "test-flavor",
+    "nodeLabels": {
+      "node.kubernetes.io/instance-type": "m5.xlarge"
+    }
+  }
+}
+
+assert {
+  res.status: eq 201
+}

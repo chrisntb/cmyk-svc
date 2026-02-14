@@ -1,0 +1,19 @@
+name: Check - CMYK SVC
+on:
+  pull_request:
+    paths:
+      - '**'
+jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Environment
+        run: env
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Check
+        shell: bash
+        run: |
+          echo "Go version=$(go -v)"
+          echo "::endgroup::"

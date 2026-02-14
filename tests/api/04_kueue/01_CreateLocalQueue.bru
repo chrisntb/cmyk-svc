@@ -1,0 +1,22 @@
+meta {
+  name: Create Local Queue
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:{{port}}/api/v1/namespaces/default/local-queues
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "test-queue",
+    "clusterQueue": "cluster-queue"
+  }
+}
+
+assert {
+  res.status: eq 201
+}

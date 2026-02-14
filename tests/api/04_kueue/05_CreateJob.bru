@@ -1,0 +1,21 @@
+meta {
+  name: Create Job
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://localhost:{{port}}/api/v1/jobs
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "test-job"
+  }
+}
+
+assert {
+  res.status: eq 201
+}

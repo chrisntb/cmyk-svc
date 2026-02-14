@@ -1,0 +1,15 @@
+meta {
+  name: Delete Resource Flavor
+  type: http
+  seq: 8
+}
+
+delete {
+  url: http://localhost:{{port}}/api/v1/resource-flavors/test-flavor
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 204
+}

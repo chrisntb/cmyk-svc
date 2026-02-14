@@ -1,0 +1,19 @@
+[
+  {
+    "name": "default-queue",
+    "namespace": "default",
+    "clusterQueue": "cluster-queue",
+    "pendingWorkloads": 2,
+    "reservingWorkloads": 1,
+    "admittedWorkloads": 3
+  },
+  {
+    "name": "gpu-queue",
+    "namespace": "ml-training",
+    "clusterQueue": "gpu-cluster-queue",
+    "stopPolicy": "None",
+    "pendingWorkloads": 5,
+    "reservingWorkloads": 0,
+    "admittedWorkloads": 2
+  }
+]

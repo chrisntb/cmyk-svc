@@ -1,0 +1,31 @@
+[
+  {
+    "name": "default",
+    "nodeLabels": {
+      "node.kubernetes.io/instance-type": "m5.xlarge"
+    }
+  },
+  {
+    "name": "gpu",
+    "nodeLabels": {
+      "node.kubernetes.io/instance-type": "p3.2xlarge",
+      "nvidia.com/gpu.present": "true"
+    },
+    "nodeTaints": [
+      {
+        "effect": "NoSchedule",
+        "key": "nvidia.com/gpu",
+        "timeAdded": "2026-01-30T23:45:30Z",
+        "value": "true"
+      }
+    ],
+    "tolerations": [
+      {
+        "effect": "NoSchedule",
+        "key": "nvidia.com/gpu",
+        "operator": "Equal",
+        "value": "true"
+      }
+    ]
+  }
+]

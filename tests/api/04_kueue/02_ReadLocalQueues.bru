@@ -1,0 +1,15 @@
+meta {
+  name: Read Local Queues
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:{{port}}/api/v1/local-queues
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: in [200, 204]
+}
