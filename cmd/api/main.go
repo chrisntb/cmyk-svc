@@ -4,6 +4,7 @@ import (
 	"cmyk/internal/clients/env"
 	"cmyk/internal/clients/k8s"
 	"cmyk/internal/clients/mock"
+	"cmyk/internal/clients/socks5"
 	"cmyk/internal/handlers"
 
 	"flag"
@@ -26,13 +27,23 @@ func main() {
 	envClient := env.New()
 	log.Printf("created env client: %v", envClient)
 
+	var socks5Client *socks5.Client
+	if envClient.Socks5ProxyMode() {
+		var err error
+		socks5Client, err = socks5.New(envClient.Socks5ProxyEnv())
+		if err != nil {
+			log.Fatalf("failed creating socks5 client: %v", err)
+		}
+		log.Printf("created socks5 client")
+	}
+
 	// The default location for the kubeconfig file is in the user's home directory.
 	var kubeconfig string
 	if home := os.Getenv("HOME"); home != "" {
 		kubeconfig = filepath.Join(home, ".kube", "config")
 	}
 
-	k8sClient, err := k8s.New(kubeconfig)
+	k8sClient, err := k8s.New(envClient, socks5Client, kubeconfig)
 	if err != nil {
 		log.Printf("failed creating k8s client: %v", err)
 	} else {

@@ -1,6 +1,8 @@
 project_name = cmyk
 image_name = $(project_name)
 
+socks5_proxy = socks5://127.0.0.1:8123
+
 .PHONY: openapi
 
 help: ## This help dialog.
@@ -66,6 +68,11 @@ run: ## Run the app locally
 	@echo
 	@echo "Running the app locally"
 	go run cmd/api/main.go
+
+runs: ## Run the app locally using a SOCKS5 proxy
+	@echo
+	@echo "Running the app locally"
+	SOCKS5_PROXY=$(socks5_proxy) go run cmd/api/main.go
 
 run_: ## Run the app locally in mock mode
 	@echo

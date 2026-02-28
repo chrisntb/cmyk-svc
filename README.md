@@ -51,6 +51,8 @@ make help
 
 ```shell
 make run
+# OR using a SOCKS5 proxy
+SOCKS5_PROXY="socks5://127.0.0.1:8123" make run
 # OR using mock data
 make run_
 

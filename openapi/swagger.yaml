@@ -1,0 +1,717 @@
+definitions:
+  models.Condition:
+    properties:
+      lastTransitionTime:
+        type: string
+      message:
+        type: string
+      observedGeneration:
+        type: integer
+      reason:
+        type: string
+      status:
+        type: string
+      type:
+        type: string
+    type: object
+  models.ContainerPort:
+    properties:
+      containerPort:
+        type: integer
+      hostIP:
+        type: string
+      hostPort:
+        type: integer
+      name:
+        type: string
+      protocol:
+        type: string
+    type: object
+  models.EnvVar:
+    properties:
+      name:
+        type: string
+      value:
+        type: string
+    type: object
+  models.Error:
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+      reason:
+        type: string
+    type: object
+  models.FlavorUsage:
+    properties:
+      name:
+        type: string
+      resources:
+        items:
+          $ref: '#/definitions/models.ResourceUsage'
+        type: array
+    type: object
+  models.Health:
+    properties:
+      status:
+        type: string
+    type: object
+  models.Job:
+    properties:
+      name:
+        type: string
+    type: object
+  models.LocalQueue:
+    properties:
+      admittedWorkloads:
+        type: integer
+      clusterQueue:
+        type: string
+      conditions:
+        items:
+          $ref: '#/definitions/models.Condition'
+        type: array
+      flavorsReservation:
+        items:
+          $ref: '#/definitions/models.FlavorUsage'
+        type: array
+      flavorsUsage:
+        items:
+          $ref: '#/definitions/models.FlavorUsage'
+        type: array
+      name:
+        type: string
+      namespace:
+        type: string
+      pendingWorkloads:
+        type: integer
+      reservingWorkloads:
+        type: integer
+      stopPolicy:
+        type: string
+    type: object
+  models.Node:
+    properties:
+      cpu:
+        type: string
+      ip:
+        type: string
+      kubeletVersion:
+        type: string
+      memory:
+        type: string
+      name:
+        type: string
+      ready:
+        type: boolean
+      roles:
+        type: string
+    type: object
+  models.NodeAddress:
+    properties:
+      address:
+        type: string
+      type:
+        type: string
+    type: object
+  models.NodeCondition:
+    properties:
+      lastHeartbeatTime:
+        type: string
+      lastTransitionTime:
+        type: string
+      message:
+        type: string
+      reason:
+        type: string
+      status:
+        type: string
+      type:
+        type: string
+    type: object
+  models.NodeDetail:
+    properties:
+      addresses:
+        items:
+          $ref: '#/definitions/models.NodeAddress'
+        type: array
+      allocatable:
+        $ref: '#/definitions/models.NodeResources'
+      annotations:
+        additionalProperties:
+          type: string
+        type: object
+      capacity:
+        $ref: '#/definitions/models.NodeResources'
+      conditions:
+        items:
+          $ref: '#/definitions/models.NodeCondition'
+        type: array
+      creationTimestamp:
+        type: string
+      images:
+        items:
+          $ref: '#/definitions/models.NodeImage'
+        type: array
+      labels:
+        additionalProperties:
+          type: string
+        type: object
+      name:
+        type: string
+      nodeInfo:
+        $ref: '#/definitions/models.NodeSystemInfo'
+      podCIDR:
+        type: string
+      ready:
+        type: boolean
+      roles:
+        type: string
+      taints:
+        items:
+          $ref: '#/definitions/models.NodeTaint'
+        type: array
+      uid:
+        type: string
+    type: object
+  models.NodeImage:
+    properties:
+      names:
+        items:
+          type: string
+        type: array
+      sizeBytes:
+        type: integer
+    type: object
+  models.NodeResources:
+    additionalProperties:
+      type: string
+    type: object
+  models.NodeSystemInfo:
+    properties:
+      architecture:
+        type: string
+      bootID:
+        type: string
+      containerRuntimeVersion:
+        type: string
+      kernelVersion:
+        type: string
+      kubeProxyVersion:
+        type: string
+      kubeletVersion:
+        type: string
+      machineID:
+        type: string
+      operatingSystem:
+        type: string
+      osImage:
+        type: string
+      systemUUID:
+        type: string
+    type: object
+  models.NodeTaint:
+    properties:
+      effect:
+        type: string
+      key:
+        type: string
+      timeAdded:
+        type: string
+      value:
+        type: string
+    type: object
+  models.OwnerReference:
+    properties:
+      apiVersion:
+        type: string
+      kind:
+        type: string
+      name:
+        type: string
+      uid:
+        type: string
+    type: object
+  models.Pod:
+    properties:
+      name:
+        type: string
+      namespace:
+        type: string
+      node:
+        type: string
+      podIP:
+        type: string
+      restarts:
+        type: integer
+      status:
+        type: string
+      statusClass:
+        type: string
+    type: object
+  models.PodCondition:
+    properties:
+      lastProbeTime:
+        type: string
+      lastTransitionTime:
+        type: string
+      message:
+        type: string
+      reason:
+        type: string
+      status:
+        type: string
+      type:
+        type: string
+    type: object
+  models.PodContainer:
+    properties:
+      env:
+        items:
+          $ref: '#/definitions/models.EnvVar'
+        type: array
+      image:
+        type: string
+      name:
+        type: string
+      ports:
+        items:
+          $ref: '#/definitions/models.ContainerPort'
+        type: array
+      ready:
+        type: boolean
+      resources:
+        $ref: '#/definitions/models.ResourceRequirements'
+      restartCount:
+        type: integer
+      state:
+        type: string
+      stateReason:
+        type: string
+      volumeMounts:
+        items:
+          $ref: '#/definitions/models.VolumeMount'
+        type: array
+    type: object
+  models.PodDetail:
+    properties:
+      annotations:
+        additionalProperties:
+          type: string
+        type: object
+      conditions:
+        items:
+          $ref: '#/definitions/models.PodCondition'
+        type: array
+      containers:
+        items:
+          $ref: '#/definitions/models.PodContainer'
+        type: array
+      creationTimestamp:
+        type: string
+      hostIP:
+        type: string
+      initContainers:
+        items:
+          $ref: '#/definitions/models.PodContainer'
+        type: array
+      labels:
+        additionalProperties:
+          type: string
+        type: object
+      name:
+        type: string
+      namespace:
+        type: string
+      node:
+        type: string
+      ownerReferences:
+        items:
+          $ref: '#/definitions/models.OwnerReference'
+        type: array
+      podIP:
+        type: string
+      qosClass:
+        type: string
+      serviceAccount:
+        type: string
+      status:
+        type: string
+      statusClass:
+        type: string
+      uid:
+        type: string
+      volumes:
+        items:
+          $ref: '#/definitions/models.PodVolume'
+        type: array
+    type: object
+  models.PodVolume:
+    properties:
+      name:
+        type: string
+      source:
+        type: string
+      type:
+        type: string
+    type: object
+  models.ResourceFlavor:
+    properties:
+      name:
+        type: string
+      nodeLabels:
+        additionalProperties:
+          type: string
+        type: object
+      nodeTaints:
+        items:
+          $ref: '#/definitions/models.NodeTaint'
+        type: array
+      tolerations:
+        items:
+          $ref: '#/definitions/models.Toleration'
+        type: array
+      topologyName:
+        type: string
+    type: object
+  models.ResourceRequirements:
+    properties:
+      limits:
+        additionalProperties:
+          type: string
+        type: object
+      requests:
+        additionalProperties:
+          type: string
+        type: object
+    type: object
+  models.ResourceUsage:
+    properties:
+      name:
+        type: string
+      total:
+        type: string
+    type: object
+  models.Toleration:
+    properties:
+      effect:
+        type: string
+      key:
+        type: string
+      operator:
+        type: string
+      tolerationSeconds:
+        type: integer
+      value:
+        type: string
+    type: object
+  models.VolumeMount:
+    properties:
+      mountPath:
+        type: string
+      name:
+        type: string
+      readOnly:
+        type: boolean
+      subPath:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /:
+    get:
+      description: Read health
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Health'
+      summary: Read health
+      tags:
+      - Health
+  /api/v1/jobs:
+    post:
+      consumes:
+      - application/json
+      description: Create a new job
+      parameters:
+      - description: Job to create
+        in: body
+        name: job
+        required: true
+        schema:
+          $ref: '#/definitions/models.Job'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Job'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.Error'
+      summary: Create job
+      tags:
+      - Job
+  /api/v1/local-queues:
+    get:
+      description: Get local queues
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.LocalQueue'
+            type: array
+      summary: Get local queues
+      tags:
+      - LocalQueues
+  /api/v1/namespaces/{namespace}/local-queues:
+    post:
+      consumes:
+      - application/json
+      description: Create a new local queue
+      parameters:
+      - description: LocalQueue namespace
+        in: path
+        name: namespace
+        required: true
+        type: string
+      - description: LocalQueue to create
+        in: body
+        name: localQueue
+        required: true
+        schema:
+          $ref: '#/definitions/models.LocalQueue'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.LocalQueue'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.Error'
+      summary: Create local queue
+      tags:
+      - LocalQueues
+  /api/v1/namespaces/{namespace}/local-queues/{name}:
+    delete:
+      description: Delete a local queue
+      parameters:
+      - description: LocalQueue namespace
+        in: path
+        name: namespace
+        required: true
+        type: string
+      - description: LocalQueue name
+        in: path
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "502":
+          description: Bad Gateway
+          schema:
+            $ref: '#/definitions/models.Error'
+      summary: Delete local queue
+      tags:
+      - LocalQueues
+    get:
+      description: Get local queue detail
+      parameters:
+      - description: LocalQueue namespace
+        in: path
+        name: namespace
+        required: true
+        type: string
+      - description: LocalQueue name
+        in: path
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.LocalQueue'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.Error'
+      summary: Get local queue detail
+      tags:
+      - LocalQueues
+  /api/v1/nodes:
+    get:
+      description: Get nodes
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Node'
+            type: array
+      summary: Get nodes
+      tags:
+      - Nodes
+  /api/v1/nodes/{name}:
+    get:
+      description: Get node detail
+      parameters:
+      - description: Node name
+        in: path
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.NodeDetail'
+      summary: Get node detail
+      tags:
+      - Nodes
+  /api/v1/pods:
+    get:
+      description: Get pods
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Pod'
+            type: array
+      summary: Get pods
+      tags:
+      - Pods
+  /api/v1/pods/{namespace}/{name}:
+    get:
+      description: Get pod detail
+      parameters:
+      - description: Pod namespace
+        in: path
+        name: namespace
+        required: true
+        type: string
+      - description: Pod name
+        in: path
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PodDetail'
+      summary: Get pod detail
+      tags:
+      - Pods
+  /api/v1/resource-flavors:
+    get:
+      description: Get resource flavors
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.ResourceFlavor'
+            type: array
+      summary: Get resource flavors
+      tags:
+      - ResourceFlavors
+    post:
+      consumes:
+      - application/json
+      description: Create a new resource flavor
+      parameters:
+      - description: ResourceFlavor to create
+        in: body
+        name: resourceFlavor
+        required: true
+        schema:
+          $ref: '#/definitions/models.ResourceFlavor'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.ResourceFlavor'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.Error'
+      summary: Create resource flavor
+      tags:
+      - ResourceFlavors
+  /api/v1/resource-flavors/{name}:
+    delete:
+      description: Delete a resource flavor
+      parameters:
+      - description: ResourceFlavor name
+        in: path
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "502":
+          description: Bad Gateway
+          schema:
+            $ref: '#/definitions/models.Error'
+      summary: Delete resource flavor
+      tags:
+      - ResourceFlavors
+    get:
+      description: Get resource flavor detail
+      parameters:
+      - description: ResourceFlavor name
+        in: path
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ResourceFlavor'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.Error'
+      summary: Get resource flavor detail
+      tags:
+      - ResourceFlavors
+swagger: "2.0"

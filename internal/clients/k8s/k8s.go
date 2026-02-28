@@ -1,6 +1,8 @@
 package k8s
 
 import (
+	"cmyk/internal/clients/env"
+	"cmyk/internal/clients/socks5"
 	"cmyk/internal/models"
 	"context"
 	"fmt"
@@ -14,14 +16,20 @@ import (
 
 type Client struct {
 	Clientset      *kubernetes.Clientset
+	EnvClient      *env.Client
 	KueueClientset kueueversioned.Interface
 }
 
-func New(kubeconfig string) (*Client, error) {
+func New(envClient *env.Client, socks5Client *socks5.Client, kubeconfig string) (*Client, error) {
 	// Create the client configuration from the kubeconfig file.
 	config, err := clientcmd.BuildConfigFromFlags("", kubeconfig)
 	if err != nil {
 		return nil, fmt.Errorf("failed building kube config: %w", err)
+	}
+
+	// Route traffic through the SOCKS5 proxy if one is configured.
+	if socks5Client != nil {
+		config.Dial = socks5Client.Dial
 	}
 
 	// Configure client-side rate limiting.
@@ -39,7 +47,7 @@ func New(kubeconfig string) (*Client, error) {
 		return nil, fmt.Errorf("failed creating kueue clientset: %w", err)
 	}
 
-	return &Client{Clientset: clientset, KueueClientset: kueueClientset}, nil
+	return &Client{Clientset: clientset, EnvClient: envClient, KueueClientset: kueueClientset}, nil
 }
 
 func (c Client) PodCountInDefaultNamespace() (int, error) {
