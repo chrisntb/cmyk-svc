@@ -15,7 +15,7 @@
                     "pod-template-generation": "1",
                     "tier": "node"
                 },
-                "name": "mock-kube-flannel-ds-4p59j",
+                "name": "svc-mock-kube-flannel-ds-4p59j",
                 "namespace": "kube-flannel",
                 "ownerReferences": [
                     {
@@ -562,7 +562,7 @@
                     "pod-template-generation": "1",
                     "tier": "node"
                 },
-                "name": "mock-kube-flannel-ds-5bd97",
+                "name": "svc-mock-kube-flannel-ds-5bd97",
                 "namespace": "kube-flannel",
                 "ownerReferences": [
                     {
@@ -1109,7 +1109,7 @@
                     "pod-template-generation": "1",
                     "tier": "node"
                 },
-                "name": "mock-kube-flannel-ds-nz6rd",
+                "name": "svc-mock-kube-flannel-ds-nz6rd",
                 "namespace": "kube-flannel",
                 "ownerReferences": [
                     {
@@ -1653,7 +1653,7 @@
                     "k8s-app": "kube-dns",
                     "pod-template-hash": "7d764666f9"
                 },
-                "name": "mock-coredns-7d764666f9-c4j7m",
+                "name": "svc-mock-coredns-7d764666f9-c4j7m",
                 "namespace": "kube-system",
                 "ownerReferences": [
                     {
@@ -1999,7 +1999,7 @@
                     "k8s-app": "kube-dns",
                     "pod-template-hash": "7d764666f9"
                 },
-                "name": "mock-coredns-7d764666f9-c8s56",
+                "name": "svc-mock-coredns-7d764666f9-c8s56",
                 "namespace": "kube-system",
                 "ownerReferences": [
                     {
@@ -2351,7 +2351,7 @@
                     "component": "etcd",
                     "tier": "control-plane"
                 },
-                "name": "mock-etcd-ctl",
+                "name": "svc-mock-etcd-ctl",
                 "namespace": "kube-system",
                 "ownerReferences": [
                     {
@@ -2600,7 +2600,7 @@
                     "component": "kube-apiserver",
                     "tier": "control-plane"
                 },
-                "name": "mock-kube-apiserver-ctl",
+                "name": "svc-mock-kube-apiserver-ctl",
                 "namespace": "kube-system",
                 "ownerReferences": [
                     {
@@ -2891,7 +2891,7 @@
                     "component": "kube-controller-manager",
                     "tier": "control-plane"
                 },
-                "name": "mock-kube-controller-manager-ctl",
+                "name": "svc-mock-kube-controller-manager-ctl",
                 "namespace": "kube-system",
                 "ownerReferences": [
                     {
@@ -3179,7 +3179,7 @@
                     "k8s-app": "kube-proxy",
                     "pod-template-generation": "1"
                 },
-                "name": "mock-kube-proxy-7z66q",
+                "name": "svc-mock-kube-proxy-7z66q",
                 "namespace": "kube-system",
                 "ownerReferences": [
                     {
@@ -3498,7 +3498,7 @@
                     "k8s-app": "kube-proxy",
                     "pod-template-generation": "1"
                 },
-                "name": "mock-kube-proxy-8fxqp",
+                "name": "svc-mock-kube-proxy-8fxqp",
                 "namespace": "kube-system",
                 "ownerReferences": [
                     {
@@ -3817,7 +3817,7 @@
                     "k8s-app": "kube-proxy",
                     "pod-template-generation": "1"
                 },
-                "name": "mock-kube-proxy-ggzlw",
+                "name": "svc-mock-kube-proxy-ggzlw",
                 "namespace": "kube-system",
                 "ownerReferences": [
                     {
@@ -4140,7 +4140,7 @@
                     "component": "kube-scheduler",
                     "tier": "control-plane"
                 },
-                "name": "mock-kube-scheduler-ctl",
+                "name": "svc-mock-kube-scheduler-ctl",
                 "namespace": "kube-system",
                 "ownerReferences": [
                     {
@@ -4360,7 +4360,7 @@
                     "control-plane": "controller-manager",
                     "pod-template-hash": "7cd79cbb54"
                 },
-                "name": "mock-kueue-controller-manager-7cd79cbb54-6hl5p",
+                "name": "svc-mock-kueue-controller-manager-7cd79cbb54-6hl5p",
                 "namespace": "kueue-system",
                 "ownerReferences": [
                     {

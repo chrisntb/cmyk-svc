@@ -28,13 +28,15 @@ func main() {
 	log.Printf("created env client: %v", envClient)
 
 	var socks5Client *socks5.Client
-	if envClient.Socks5ProxyMode() {
+	if !envClient.IsMockMode() && envClient.Socks5ProxyMode() {
 		var err error
 		socks5Client, err = socks5.New(envClient.Socks5ProxyEnv())
 		if err != nil {
 			log.Fatalf("failed creating socks5 client: %v", err)
 		}
 		log.Printf("created socks5 client")
+	} else {
+		log.Printf("skipping socks5 client create")
 	}
 
 	// The default location for the kubeconfig file is in the user's home directory.
@@ -48,11 +50,14 @@ func main() {
 		log.Printf("failed creating k8s client: %v", err)
 	} else {
 		log.Printf("created k8s client")
-		count, err := k8sClient.PodCountInDefaultNamespace()
-		if err != nil {
-			log.Printf("failed determining pod count: %v", err)
-		} else {
-			log.Printf("there are %d pods in the default namespace", count)
+		if !envClient.IsMockMode() {
+  		log.Printf("k8s client not running in mock mode, determining pod count")
+			count, err := k8sClient.PodCountInDefaultNamespace()
+			if err != nil {
+				log.Printf("failed determining pod count: %v", err)
+			} else {
+				log.Printf("there are %d pods in the default namespace", count)
+			}
 		}
 	}
 

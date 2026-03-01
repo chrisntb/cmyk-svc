@@ -15,7 +15,7 @@
                 "labels": {
                     "app.kubernetes.io/managed-by": "Helm"
                 },
-                "name": "default-parent-queue",
+                "name": "svc-mock-research-grp",
                 "resourceVersion": "1583",
                 "uid": "1829af16-0cab-4b9f-aa8d-fdf854a11191"
             },
@@ -40,7 +40,7 @@
             },
             "status": {
                 "childQueues": [
-                    "default-queue"
+                    "svc-mock-training"
                 ]
             }
         },
@@ -58,12 +58,12 @@
                 "labels": {
                     "app.kubernetes.io/managed-by": "Helm"
                 },
-                "name": "default-queue",
+                "name": "svc-mock-training",
                 "resourceVersion": "1138",
                 "uid": "9dd37a32-8c20-4983-a36e-1cd65d06a9a4"
             },
             "spec": {
-                "parentQueue": "default-parent-queue",
+                "parentQueue": "svc-mock-research-grp",
                 "resources": {
                     "cpu": {
                         "limit": -1,
@@ -92,7 +92,7 @@
                 },
                 "creationTimestamp": "2026-02-28T23:01:53Z",
                 "generation": 1,
-                "name": "department",
+                "name": "svc-mock-engineering-grp",
                 "resourceVersion": "180737",
                 "uid": "d6f9a25e-d12a-44b5-ba59-8574e0706efa"
             },
@@ -110,7 +110,7 @@
             },
             "status": {
                 "childQueues": [
-                    "team"
+                    "svc-mock-chat"
                 ]
             }
         },
@@ -123,12 +123,12 @@
                 },
                 "creationTimestamp": "2026-02-28T23:01:53Z",
                 "generation": 1,
-                "name": "team",
+                "name": "svc-mock-chat",
                 "resourceVersion": "180736",
                 "uid": "e0482709-b588-418b-a8a4-f849dc4b2514"
             },
             "spec": {
-                "parentQueue": "department",
+                "parentQueue": "svc-mock-engineering-grp",
                 "resources": {
                     "cpu": {
                         "limit": -1,
