@@ -6,22 +6,11 @@ Run all API tests:
 
 ```shell
 mkdir -p tmp
-bru run --env [local|dev] --output tmp/results.json
+bru run --env [local|dev] --output tmp/all.json
+cat tmp/all.json
 ```
 
-Run one set of API test:
-
-```shell
-mkdir -p tmp
-bru run --env [local|dev] 01_health --output tmp/01_health.json
-```
-
-Run one API test:
-
-```shell
-mkdir -p tmp
-bru run --env [local|dev] 01_health/01_ReadHealth.bru --output tmp/01_ReadHealth.bru.json
-```
+## Smoke Tests
 
 Sometimes it is useful to run a few quick smoke tests using `curl`.
 
@@ -44,4 +33,44 @@ Read Pods:
 ```shell
 curl -v -X GET http://localhost:4000/api/v1/pods \
   -H "Accept: application/json"
+```
+
+## Health
+
+```shell
+mkdir -p tmp
+bru run --env [local|dev] 01_health --output tmp/01_health.json
+cat tmp/01_health.json
+```
+
+## Nodes
+
+```shell
+mkdir -p tmp
+bru run --env [local|dev] 02_nodes --output tmp/02_nodes.json
+cat tmp/02_nodes.json
+```
+
+## Pods
+
+```shell
+mkdir -p tmp
+bru run --env [local|dev] 03_pods --output tmp/03_pods.json
+cat tmp/03_pods.json
+```
+
+## Kueue
+
+```shell
+mkdir -p tmp
+bru run --env [local|dev] 04_kueue --output tmp/04_kueue.json
+cat tmp/04_kueue.json
+```
+
+## KAI Scheduler
+
+```shell
+mkdir -p tmp
+bru run --env [local|dev] 05_kai-scheduler --output
+cat tmp/05_kai-scheduler.json
 ```

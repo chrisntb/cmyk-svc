@@ -17,6 +17,7 @@ See [docs/Tools.md](docs/Tools.md) for the required tools.
 You need to setup the infrastructure, see [cmyk-system](https://github.com/chrisntb/cmyk-system).
 
 If using a kubernetes cluster, once setup, copy its controller `Kubeconfig` file from `/home/ubuntu/.kube/config` to this file on your local machine `~/.kube/config`.
+Remember to start your proxy if you are targeting `Private Bare Metal Nodes` with `make runs` instead of `Multipass Virtual Machines Nodes` with `make run`, see [cmyk-system - Nodes](https://github.com/chrisntb/cmyk-system/blob/main/docs/Nodes.md).
 After that, when you run the service, it should be able to access the K8s cluster:
 
 ```shell
@@ -25,7 +26,7 @@ make run
 Running the app locally
 go run cmd/api/main.go
 
-2026/02/01 11:11:33 created env client: MockModeEnv=NOT_SET, IsMockMode=false
+2026/02/01 11:11:33 created env client: MOCK_MODE=1, IsMockMode=true, HTTP_PROXY=NOT_SET, HTTPS_PROXY=NOT_SET, SOCKS5_PROXY=NOT_SET
 2026/02/01 11:11:33 created k8s client
 2026/02/01 11:11:33 created mock client
 

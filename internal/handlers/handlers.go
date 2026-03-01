@@ -53,6 +53,9 @@ func NewHandlers(app *fiber.App, envClient *env.Client, k8sClient *k8s.Client, m
 	v1.Post("/namespaces/:namespace/local-queues", handlers.CreateLocalQueue)
 	v1.Delete("/namespaces/:namespace/local-queues/:name", handlers.DeleteLocalQueue)
 
+	v1.Get("/kai-scheduler-queues", handlers.ReadKaiSchedulerQueues)
+	v1.Get("/kai-scheduler-queues/:name/child-queues", handlers.ReadKaiSchedulerChildQueues)
+
 	// Must come last
 	handlers.App.Use(NotFound)
 
