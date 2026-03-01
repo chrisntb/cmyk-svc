@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"strings"
 
+	schedulingv2 "github.com/NVIDIA/KAI-scheduler/pkg/apis/client/clientset/versioned/typed/scheduling/v2"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/clientcmd"
@@ -15,9 +16,10 @@ import (
 )
 
 type Client struct {
-	Clientset      *kubernetes.Clientset
-	EnvClient      *env.Client
-	KueueClientset kueueversioned.Interface
+	Clientset          *kubernetes.Clientset
+	EnvClient          *env.Client
+	KAISchedulerClient schedulingv2.SchedulingV2Interface
+	KueueClientset     kueueversioned.Interface
 }
 
 func New(envClient *env.Client, socks5Client *socks5.Client, kubeconfig string) (*Client, error) {
@@ -47,7 +49,17 @@ func New(envClient *env.Client, socks5Client *socks5.Client, kubeconfig string) 
 		return nil, fmt.Errorf("failed creating kueue clientset: %w", err)
 	}
 
-	return &Client{Clientset: clientset, EnvClient: envClient, KueueClientset: kueueClientset}, nil
+	kaiSchedulerClient, err := newKAIClients(config)
+	if err != nil {
+		return nil, fmt.Errorf("failed creating kai scheduler clientset: %w", err)
+	}
+
+	return &Client{
+		Clientset:          clientset,
+		EnvClient:          envClient,
+		KAISchedulerClient: kaiSchedulerClient,
+		KueueClientset:     kueueClientset,
+	}, nil
 }
 
 func (c Client) PodCountInDefaultNamespace() (int, error) {

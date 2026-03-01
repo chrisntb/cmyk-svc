@@ -10,10 +10,7 @@
       "Grep(.secrets)",
       "Read(tmp)",
       "Glob(tmp)",
-      "Grep(tmp)",
-      "Read(vendor)",
-      "Glob(vendor)",
-      "Grep(vendor)"
+      "Grep(tmp)"
     ]
   }
 }
