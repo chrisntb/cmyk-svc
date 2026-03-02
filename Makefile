@@ -69,7 +69,7 @@ run: ## Run the app locally
 	@echo "Running the app locally"
 	go run cmd/api/main.go
 
-runs: ## Run the app locally using a SOCKS5 proxy
+runp: ## Run the app locally using a SOCKS5 proxy
 	@echo
 	@echo "Running the app locally"
 	SOCKS5_PROXY=$(socks5_proxy) go run cmd/api/main.go

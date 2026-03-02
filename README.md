@@ -54,7 +54,7 @@ make help
 make run
 
 # OR using a SOCKS5 proxy
-make runs
+make runp
 
 # OR using mock data
 make run_
