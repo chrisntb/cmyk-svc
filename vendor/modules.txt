@@ -1,15 +1,3 @@
-# github.com/NVIDIA/KAI-scheduler v0.12.15
-## explicit; go 1.24.4
-github.com/NVIDIA/KAI-scheduler/pkg/apis/client/clientset/versioned
-github.com/NVIDIA/KAI-scheduler/pkg/apis/client/clientset/versioned/scheme
-github.com/NVIDIA/KAI-scheduler/pkg/apis/client/clientset/versioned/typed/kai/v1alpha1
-github.com/NVIDIA/KAI-scheduler/pkg/apis/client/clientset/versioned/typed/scheduling/v1alpha2
-github.com/NVIDIA/KAI-scheduler/pkg/apis/client/clientset/versioned/typed/scheduling/v2
-github.com/NVIDIA/KAI-scheduler/pkg/apis/client/clientset/versioned/typed/scheduling/v2alpha2
-github.com/NVIDIA/KAI-scheduler/pkg/apis/kai/v1alpha1
-github.com/NVIDIA/KAI-scheduler/pkg/apis/scheduling/v1alpha2
-github.com/NVIDIA/KAI-scheduler/pkg/apis/scheduling/v2
-github.com/NVIDIA/KAI-scheduler/pkg/apis/scheduling/v2alpha2
 # github.com/andybalholm/brotli v1.1.0
 ## explicit; go 1.13
 github.com/andybalholm/brotli
@@ -119,6 +107,18 @@ github.com/google/uuid
 # github.com/json-iterator/go v1.1.12
 ## explicit; go 1.12
 github.com/json-iterator/go
+# github.com/kai-scheduler/KAI-scheduler v0.13.1
+## explicit; go 1.24.4
+github.com/kai-scheduler/KAI-scheduler/pkg/apis/client/clientset/versioned
+github.com/kai-scheduler/KAI-scheduler/pkg/apis/client/clientset/versioned/scheme
+github.com/kai-scheduler/KAI-scheduler/pkg/apis/client/clientset/versioned/typed/kai/v1alpha1
+github.com/kai-scheduler/KAI-scheduler/pkg/apis/client/clientset/versioned/typed/scheduling/v1alpha2
+github.com/kai-scheduler/KAI-scheduler/pkg/apis/client/clientset/versioned/typed/scheduling/v2
+github.com/kai-scheduler/KAI-scheduler/pkg/apis/client/clientset/versioned/typed/scheduling/v2alpha2
+github.com/kai-scheduler/KAI-scheduler/pkg/apis/kai/v1alpha1
+github.com/kai-scheduler/KAI-scheduler/pkg/apis/scheduling/v1alpha2
+github.com/kai-scheduler/KAI-scheduler/pkg/apis/scheduling/v2
+github.com/kai-scheduler/KAI-scheduler/pkg/apis/scheduling/v2alpha2
 # github.com/klauspost/compress v1.18.0
 ## explicit; go 1.22
 github.com/klauspost/compress/flate
@@ -175,7 +175,7 @@ github.com/rivo/uniseg
 # github.com/spf13/pflag v1.0.10
 ## explicit; go 1.12
 github.com/spf13/pflag
-# github.com/tailscale/hujson v0.0.0-20250605163823-992244df8c5a
+# github.com/tailscale/hujson v0.0.0-20260302212456-ecc657c15afd
 ## explicit; go 1.23
 github.com/tailscale/hujson
 # github.com/valyala/bytebufferpool v1.0.0

@@ -5,7 +5,7 @@ import (
 	"context"
 	"fmt"
 
-	kaiSchedulingV2 "github.com/NVIDIA/KAI-scheduler/pkg/apis/scheduling/v2"
+	kaiSchedulingV2 "github.com/kai-scheduler/KAI-scheduler/pkg/apis/scheduling/v2"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )

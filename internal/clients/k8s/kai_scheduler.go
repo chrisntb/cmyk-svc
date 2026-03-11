@@ -1,8 +1,8 @@
 package k8s
 
 import (
-	kaiClientset "github.com/NVIDIA/KAI-scheduler/pkg/apis/client/clientset/versioned"
-	schedulingv2 "github.com/NVIDIA/KAI-scheduler/pkg/apis/client/clientset/versioned/typed/scheduling/v2"
+	kaiClientset "github.com/kai-scheduler/KAI-scheduler/pkg/apis/client/clientset/versioned"
+	schedulingv2 "github.com/kai-scheduler/KAI-scheduler/pkg/apis/client/clientset/versioned/typed/scheduling/v2"
 	"k8s.io/client-go/rest"
 )
 
