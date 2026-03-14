@@ -1,14 +1,14 @@
 
-----------
+# ----------
 # Others
 
 .claude/settings.local.json
 .secrets
 tmp
-----------
+# ----------
 
 
-----------
+# ----------
 # Go
 
 bin
@@ -16,7 +16,7 @@ go
 go-tools
 src/gopkg.in
 _vendor*
-----------
+# ----------
 
 
 # --------
